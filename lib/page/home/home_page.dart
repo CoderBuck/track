@@ -9,20 +9,37 @@ class HomePage extends GetWidget<HomeModel> {
     var daysInYear = DateTimeUtil.daysInYear();
     var daysOneYear = DateTimeUtil.daysOneYear();
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       appBar: AppBar(
-        title: Text('Home  $daysInYear/$daysOneYear'),
+        elevation: 0,
+        title: Text('Track  $daysInYear/$daysOneYear'),
+        actions: [
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            alignment: Alignment.bottomCenter,
+            child: Obx(
+              () => Text(
+                controller.countDownTimeStr,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ],
       ),
       body: GridView.builder(
         itemCount: DateTimeUtil.daysOneYear(),
-        padding: const EdgeInsets.all(2),
+        padding: const EdgeInsets.all(6),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 15,
         ),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(1.0),
+            padding: const EdgeInsets.all(2),
             child: Container(
-              color: index+1 < daysInYear ? Colors.grey : Colors.green,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: index + 1 < daysInYear ? Colors.grey : Colors.green,
+              ),
             ),
           );
         },
