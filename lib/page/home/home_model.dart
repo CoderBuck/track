@@ -28,7 +28,6 @@ class HomeModel extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     Timer.periodic(Duration(seconds: 1), (timer) {
       time.value = DateTime.now();
