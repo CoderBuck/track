@@ -26,9 +26,3 @@ doc/api/
 
 .idea
 *.iml
-
-
-
-
-!/ios/Podfile
-!/pubspec.lock
