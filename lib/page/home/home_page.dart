@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:track/page/home/home_model.dart';
 import 'package:track/util/date_time_util.dart';
 
 class HomePage extends GetWidget<HomeModel> {
   @override
   Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: TabBarView(children: [
+        TrackView(),
+        KeepGoingView(),
+      ]),
+    );
+  }
+}
+
+class TrackView extends GetWidget<HomeModel> {
+  const TrackView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     var daysInYear = DateTimeUtil.daysInYear();
     var daysOneYear = DateTimeUtil.daysOneYear();
-
     return Scaffold(
       appBar: AppBar(
         title: Text.rich(TextSpan(children: [
@@ -41,17 +56,17 @@ class HomePage extends GetWidget<HomeModel> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 15,
         ),
-
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(2),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-                color: index + 1 < daysInYear ? Colors.grey.shade600
-                    : index + 1 == daysInYear ? Colors.green
-                    : Colors.grey.shade500
-              ),
+                  borderRadius: BorderRadius.circular(4),
+                  color: index + 1 < daysInYear
+                      ? Colors.grey.shade600
+                      : index + 1 == daysInYear
+                          ? Colors.green
+                          : Colors.grey.shade500),
             ),
           );
         },
@@ -59,3 +74,19 @@ class HomePage extends GetWidget<HomeModel> {
     );
   }
 }
+
+class KeepGoingView extends GetWidget<HomeModel> {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Keep Going'),
+      ),
+    );
+  }
+
+}
+
