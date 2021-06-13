@@ -86,6 +86,17 @@ class KeepGoingView extends GetWidget<HomeModel> {
       appBar: AppBar(
         title: Text('Keep Going'),
       ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('早睡早起'),
+            subtitle: Container(
+              height: 40,
+              color: Colors.green,
+            ),
+          )
+        ],
+      ),
     );
   }
 
