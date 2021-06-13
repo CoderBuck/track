@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:track/extension/ext.dart';
 import 'package:track/page/home/home_model.dart';
 import 'package:track/util/date_time_util.dart';
 
@@ -9,8 +10,8 @@ class HomePage extends GetWidget<HomeModel> {
     return DefaultTabController(
       length: 2,
       child: TabBarView(children: [
-        TrackView(),
-        KeepGoingView(),
+        TrackView().keepAlive,
+        KeepGoingView().keepAlive,
       ]),
     );
   }
@@ -52,13 +53,13 @@ class TrackView extends GetWidget<HomeModel> {
       ),
       body: GridView.builder(
         itemCount: DateTimeUtil.daysOneYear(),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 15,
         ),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2.2),
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),

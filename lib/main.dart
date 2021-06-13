@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Track',
+
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
+        platform: TargetPlatform.iOS,
         scaffoldBackgroundColor: Colors.grey.shade900,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(
           Theme.of(context).textTheme.apply(
